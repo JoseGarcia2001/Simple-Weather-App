@@ -1,0 +1,150 @@
+:root {
+  --principal-color: #111940;
+  --gray: rgba(255, 255, 255, 0.74);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Karla", sans-serif;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 1128px;
+}
+
+main {
+  margin: 50px 80px;
+}
+
+header {
+  margin: 50px 80px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+ul {
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+}
+
+li {
+  padding: 5px;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+li:hover {
+  border-radius: 5px;
+  background: rgba(17, 25, 64, 0.1);
+}
+
+li:nth-child(1) img {
+  width: 50px;
+  margin-bottom: -5px;
+}
+
+li:nth-child(2) img,
+li:nth-child(3) img {
+  width: 37px;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 330px;
+  height: 55px;
+  background: rgba(17, 25, 64, 0.1);
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  text-align: center;
+  font-size: 16px;
+}
+
+input::placeholder {
+  color: var(--principal-color);
+  font-size: 16px;
+  text-align: center;
+}
+
+input:focus,
+input:hover {
+  background: rgba(17, 25, 64, 0.2);
+}
+
+button {
+  cursor: pointer;
+  margin-left: 16px;
+  border: none;
+  width: 158px;
+  height: 55px;
+  color: white;
+  background: var(--principal-color);
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+.cards-container {
+  flex-wrap: wrap;
+  justify-content: center;
+  display: flex;
+  gap: 35px;
+  margin-top: 67px;
+}
+
+.weather-card {
+  padding: 18px;
+  width: 187px;
+  height: 227px;
+  background: var(--principal-color);
+  box-shadow: 6px 6px 3px rgba(0, 0, 0, 0.23);
+  border-radius: 10px;
+}
+
+.card-details .city {
+  color: var(--gray);
+}
+
+.city span {
+  margin-left: 5px;
+  vertical-align: 10px;
+  padding: 2px 4px;
+  background: #f4d257;
+  border-radius: 14px;
+  font-size: 8px;
+  color: var(--principal-color);
+}
+
+.card-details .temperature {
+  margin-top: 5px;
+  color: white;
+  font-size: 50px;
+  font-family: "Inter", sans-serif;
+}
+
+.card-image {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.card-image p {
+  color: var(--gray);
+  font-size: 13px;
+}
