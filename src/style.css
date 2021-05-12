@@ -26,6 +26,7 @@ header {
 }
 
 .logo {
+  color: var(--principal-color);
   display: flex;
   align-items: center;
   gap: 15px;
@@ -33,6 +34,11 @@ header {
 
 h1 {
   font-size: 40px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--principal-color);
 }
 
 ul {
@@ -45,6 +51,9 @@ li {
   padding: 5px;
   cursor: pointer;
   list-style: none;
+}
+
+li a {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -101,6 +110,10 @@ button {
   border-radius: 10px;
 }
 
+button:hover {
+  transform: scale(1.1);
+}
+
 .cards-container {
   flex-wrap: wrap;
   justify-content: center;
@@ -109,7 +122,19 @@ button {
   margin-top: 67px;
 }
 
+svg {
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+}
+
+svg:hover path {
+  fill: gray;
+}
+
 .weather-card {
+  translate: 300px 1s;
+  position: relative;
   padding: 18px;
   width: 187px;
   height: 227px;
@@ -140,11 +165,19 @@ button {
 }
 
 .card-image {
-  margin-top: 10px;
+  margin-top: -20px;
   text-align: center;
 }
 
 .card-image p {
   color: var(--gray);
   font-size: 13px;
+}
+
+.bad-input {
+  border: 1px solid red;
+}
+
+.bad-input::placeholder {
+  color: red;
 }
