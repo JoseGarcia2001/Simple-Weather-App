@@ -7,12 +7,12 @@ const card = async (city) => {
   const response = await fetch(api);
 
   if (response.status !== 200) {
-    return;
+    return false;
   }
 
   const weatherData = await response.json();
 
-  const { name, sys, main, weather } = weatherData;
+  const { name, sys, main, weather, id } = weatherData;
 
   const view = `
       <svg  width="13" height="13" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,9 +32,10 @@ const card = async (city) => {
 
   const cardContainer = document.createElement("div");
   cardContainer.classList.add("weather-card");
+  cardContainer.dataset.id = id;
   cardContainer.innerHTML = view;
 
-  return cardContainer;
+  return { cardContainer, id };
 };
 
 export default card;

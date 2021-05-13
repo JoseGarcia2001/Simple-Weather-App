@@ -1,37 +1,64 @@
 import card from "./components/Card.js";
 
+// Array con las cartas insertadas para validar que no se repita la mísma
+const cardsInserted = [];
+
 const cardsContainer = document.querySelector("div.cards-container");
 
+// Lógica del botón para eliminar cartas
 const closeButton = (event) => {
   if (
     event.target.nodeName === "svg" ||
     event.target.parentNode.nodeName === "svg"
   ) {
-    event.target.parentElement.nodeName === "DIV"
-      ? event.target.parentElement.remove()
-      : event.target.parentElement.parentElement.remove();
+    if (event.target.parentElement.nodeName === "DIV") {
+      const elId = event.target.parentElement.dataset.id;
+      cardsInserted.splice(cardsInserted.indexOf(elId), 1);
+      event.target.parentElement.remove();
+    } else {
+      const elId = event.target.parentElement.parentElement.dataset.id;
+      cardsInserted.splice(cardsInserted.indexOf(elId), 1);
+      console.log(cardsInserted);
+      event.target.parentElement.parentElement.remove();
+    }
   }
 };
 
 cardsContainer.addEventListener("click", closeButton);
 
-const submitButton = document.querySelector("button");
-
-submitButton.addEventListener("click", () => {
+const renderData = () => {
   const input = document.querySelector("input");
-  if (!input.value) {
-    input.classList.add("bad-input");
-    input.placeholder = "Ingrese una ubicación";
-    return;
-  }
-});
+  const submitButton = document.querySelector("button");
 
-const renderData = async (city) => {
-  const cardToInsert = await card(city);
-  cardToInsert && cardsContainer.append(cardToInsert);
+  submitButton.addEventListener("click", async () => {
+    if (!input.value) {
+      input.classList.add("bad-input");
+      input.placeholder = "Ingrese una ubicación";
+      return;
+    }
+
+    const { cardContainer, id } = await card(input.value);
+
+    if (!cardContainer) {
+      input.value = "";
+      input.classList.add("bad-input");
+      input.placeholder = "Ubicación no válida";
+      return;
+    }
+
+    // Validar si la carta ya está desplegada
+    if (cardsInserted.includes(id)) {
+      input.classList.add("bad-input");
+      input.placeholder = "Ya consultaste esta ubicación";
+      input.value = "";
+      return;
+    }
+
+    input.classList.remove("bad-input");
+    cardsContainer.insertAdjacentElement("afterbegin", cardContainer);
+    input.value = "";
+    cardsInserted.push(id);
+  });
 };
 
-renderData("bogota");
-renderData("medellin");
-renderData("cali");
-renderData("asdasdas");
+renderData();
