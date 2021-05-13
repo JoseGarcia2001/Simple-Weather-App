@@ -23,7 +23,7 @@ const card = async (city) => {
         <p class="temperature">${kelvinToCelsius(main.temp)}<span>°C</span></p>
       </div>
       <div class="card-image">
-        <img src="http://openweathermap.org/img/wn/${
+        <img src="https://openweathermap.org/img/wn/${
           weather[0].icon
         }@2x.png" alt="clima">
         <p>${weather[0].description}</p>
