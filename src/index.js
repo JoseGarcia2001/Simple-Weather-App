@@ -34,6 +34,7 @@ const renderData = () => {
   const submitButton = document.querySelector("button");
 
   submitButton.addEventListener("click", async (event) => {
+    event.preventDefault();
     if (!input.value) {
       input.classList.add("bad-input");
       input.placeholder = "Ingrese una ubicación";
