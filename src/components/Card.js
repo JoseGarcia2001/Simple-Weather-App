@@ -2,7 +2,7 @@ import kelvinToCelsius from "../utils/convertTemperature.js";
 
 const card = async (city) => {
   const apiKey = "21d807407fc08f0dca752a98c2c9b2d1";
-  const baseURL = "http://api.openweathermap.org/";
+  const baseURL = "https://api.openweathermap.org/";
   const api = `${baseURL}data/2.5/weather?q=${city}&appid=${apiKey}&lang=sp`;
   const response = await fetch(api);
 
