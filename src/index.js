@@ -12,13 +12,16 @@ const closeButton = (event) => {
     event.target.parentNode.nodeName === "svg"
   ) {
     if (event.target.parentElement.nodeName === "DIV") {
-      const elId = event.target.parentElement.dataset.id;
-      cardsInserted.splice(cardsInserted.indexOf(elId), 1);
+      const elId = parseInt(event.target.parentElement.dataset.id);
+      const index = cardsInserted.indexOf(elId);
+      cardsInserted.splice(index, 1);
       event.target.parentElement.remove();
     } else {
-      const elId = event.target.parentElement.parentElement.dataset.id;
-      cardsInserted.splice(cardsInserted.indexOf(elId), 1);
-      console.log(cardsInserted);
+      const elId = parseInt(
+        event.target.parentElement.parentElement.dataset.id
+      );
+      const index = cardsInserted.indexOf(elId);
+      cardsInserted.splice(index, 1);
       event.target.parentElement.parentElement.remove();
     }
   }
@@ -30,7 +33,9 @@ const renderData = () => {
   const input = document.querySelector("input");
   const submitButton = document.querySelector("button");
 
-  submitButton.addEventListener("click", async () => {
+  submitButton.addEventListener("click", async (event) => {
+    event.preventDefault();
+
     if (!input.value) {
       input.classList.add("bad-input");
       input.placeholder = "Ingrese una ubicación";
@@ -57,6 +62,7 @@ const renderData = () => {
     input.classList.remove("bad-input");
     cardsContainer.insertAdjacentElement("afterbegin", cardContainer);
     input.value = "";
+    input.placeholder = "Ingresa una ubicación";
     cardsInserted.push(id);
   });
 };

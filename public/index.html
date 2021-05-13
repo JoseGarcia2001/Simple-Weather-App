@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="stylesheet" href="../src/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Karla:wght@400;700&display=swap" rel="stylesheet">
@@ -41,8 +42,10 @@
     </header>
     <main>
       <div class="input-container">
-          <input type="text" placeholder="Digita el nombre de tu ciudad">
-          <button>¡Consultar!</button>
+        <form action="">
+          <input type="text" autocomplete="country-name" placeholder="Digita el nombre de tu ciudad">
+          <button>¡Consultar!</button>    
+        </form>
       </div>
       <div class="cards-container">
         
