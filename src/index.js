@@ -5,7 +5,7 @@ const cardsInserted = [];
 
 const cardsContainer = document.querySelector("div.cards-container");
 
-// Lógica del botón para eliminar cartas
+// Lógica del botón para eliminar cartas con delegación de eventos
 const closeButton = (event) => {
   if (
     event.target.nodeName === "svg" ||

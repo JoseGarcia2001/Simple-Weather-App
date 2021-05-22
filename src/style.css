@@ -192,6 +192,10 @@ svg:hover path {
     margin-top: 20px;
   }
 
+  input {
+    margin-bottom: 15px;
+  }
+
   form {
     display: flex;
     flex-direction: column;
